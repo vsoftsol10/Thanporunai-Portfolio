@@ -17,6 +17,13 @@ import SlideOne from '../assets/slider1.jpeg';
 import SlideTwo from '../assets/slider2.jpeg';
 import SlideThree from '../assets/slider3.jpeg';
 import SlideFour from '../assets/slider4.jpeg';
+import SlideFive from '../assets/slider5.jpeg';
+import SlideSix from '../assets/slider6.jpeg';
+import SlideSeven from '../assets/slider7.jpeg';
+import SlideEight from '../assets/slider8.jpeg';
+import SlideNine from '../assets/slider9.jpeg';
+import SlideTen from '../assets/slider10.jpeg';
+
 const PorunaiPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,6 +66,16 @@ const PorunaiPortfolio = () => {
       id: 4,
       src: HomeSlideFour,
       alt: "Women Empowerment"
+    },
+    {
+      id: 5,
+      src: SlideFive,
+      alt: "Planting Trees"
+    },
+    {
+      id: 6,
+      src: SlideSix,
+      alt: "Community Outreach"
     }
   ];
 
@@ -92,6 +109,26 @@ const PorunaiPortfolio = () => {
       id: 6,
       src: HomeSlideThree,
       title: "Digital Innovation"
+    },
+    {
+      id: 7,
+      src: SlideFive,
+      title: "Community Empowerment"
+    },
+    {
+      id: 8,
+      src: SlideEight,
+      title: "Cultural Events"
+    },
+    {
+      id: 9,
+      src: SlideNine,
+      title: "Women Welfare"
+    },
+    {
+      id: 10,
+      src: SlideTen,
+      title: "Skill Training"
     }
   ];
 
@@ -302,22 +339,28 @@ const PorunaiPortfolio = () => {
 
               <div className="mb-6">
                 <BlurText
-                  text="சுற்றுச்சூழல் விழிப்புணர்வு மற்றும் போதை இல்லா பாதை"
+                  text="நல்லதொரு நாளுக்காக, இன்று ஒரு நற்செயல்!"
                   delay={150}
                   animateBy="words"
                   direction="top"
                   // onAnimationComplete={handleAnimationComplete}
-                  className="text-2xl mb-8"
+                  className="text-6xl mb-8"
                 />
-
-                <p className="text-lg text-green-100">
-                  Environmental Awareness and Drug-Free Path
-                </p>
               </div>
               <p className="text-xl md:text-2xl mb-8 text-green-100 leading-relaxed">
                 Dedicated to social service through river cleaning, women welfare,
                 education support, and community development initiatives.
               </p>
+              {/* <BlurText
+                text="சுற்றுச்சூழல் விழிப்புணர்வு மற்றும் போதை இல்லா பாதை"
+                delay={150}
+                animateBy="words"
+                direction="top"
+                className="text-4xl mb-4" // Change `text-3xl` to adjust size
+              />
+              <p className="text-lg text-green-100 mb-4">
+                Environmental Awareness and Drug-Free Path
+              </p> */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#contact"
@@ -580,7 +623,7 @@ const PorunaiPortfolio = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${currentSlide === index ? 'bg-green-600' : 'bg-gray-300'
+                    className={`w-3 h-3 rounded-full transition-colors duration-100 ${currentSlide === index ? 'bg-green-600' : 'bg-gray-300'
                       }`}
                   />
                 ))}
@@ -621,41 +664,46 @@ const PorunaiPortfolio = () => {
           </div>
 
           <div className="relative max-w-6xl mx-auto">
-            <div className="relative h-100 rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={galleryImages[currentSlide].src}
-                alt={galleryImages[currentSlide].title}
-                className="w-full h-full object-cover transition-opacity duration-500"
-              />
+            <div className="relative w-full max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px]">
+              {galleryImages.length > 0 && (
+                <img
+                  src={galleryImages[currentSlide].src}
+                  alt={galleryImages[currentSlide].title || `Slide ${currentSlide + 1}`}
+                  className="w-full h-full object-cover transition-opacity duration-500"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              {/* Navigation Arrows */}
+
+              {/* Navigation Arrows - Use consistent handlePrev/handleNext */}
               <button
-                onClick={() => setCurrentSlide(currentSlide === 0 ? galleryImages.length - 1 : currentSlide - 1)}
+                onClick={handlePrev}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
-                onClick={() => setCurrentSlide((currentSlide + 1) % galleryImages.length)}
+                onClick={handleNext}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>
 
-            {/* Slide Indicators */}
+            {/* Dot indicators - Fixed to show all images */}
             <div className="flex justify-center mt-6 gap-2">
               {galleryImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`transition-all duration-200 ${currentSlide === index
-                    ? 'w-12 h-3 bg-green-600 rounded-full'
-                    : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400'
+                      ? 'w-12 h-3 bg-green-600 rounded-full'
+                      : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400'
                     }`}
                 />
               ))}
             </div>
+            {/* Slide Indicators */}
+            
           </div>
         </div>
       </section>
