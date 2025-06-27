@@ -703,12 +703,16 @@ const PorunaiPortfolio = () => {
                   <Mail className="w-5 h-5 text-amber-400" />
                   <span>thanporunaiarakattalai@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-amber-400" />
-                  <span>48/2C1, Xavier's Colony, South Bye Pass Road, Near Passport Office, Tirunelveli, Tamil Nadu - 627005</span>
+                <div className="flex gap-3 items-start text-sm sm:text-base leading-relaxed">
+                  <MapPin className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                  <div className="text-white">
+                    48/2C1, Xavier's Colony, South Bye Pass Road, <br />
+                    Near Passport Office, Tirunelveli,<br />
+                    Tamil Nadu - 627005
+                  </div>
                 </div>
-              </div>
 
+              </div>
               <div className="flex gap-4">
                 <a
                   href="https://www.facebook.com/profile.php?id=61576676500363"
