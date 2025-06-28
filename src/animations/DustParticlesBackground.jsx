@@ -28,11 +28,11 @@ const DustParticlesBackground = () => {
   }, []);
 
   const getParticleColor = (colorIndex) => {
-   const colors = [
-  'rgba(34, 197, 94, 0.85)',   // Emerald Green (Tailwind: green-500)
-  'rgba(16, 185, 129, 0.73)',  // Teal Green (Tailwind: emerald-500)
-  'rgba(131, 204, 22, 0.75)'   // Lime Green (Tailwind: lime-500)
-];
+    const colors = [
+      'rgba(99, 102, 241, 0.4)', // Indigo
+      'rgba(168, 85, 247, 0.4)', // Purple
+      'rgba(59, 130, 246, 0.4)'  // Blue
+    ];
     return colors[colorIndex];
   };
 
@@ -58,17 +58,17 @@ const DustParticlesBackground = () => {
     },
     microParticle: {
       position: 'absolute',
-      width: '8px',
-      height: '8px',
+      width: '6px',
+      height: '6px',
       background: 'rgba(16, 185, 129, 0.4)',
       borderRadius: '50%',
       animation: 'microFloat linear infinite'
     },
     floatingOrb: {
       position: 'absolute',
-      width: '14px',
-      height: '14px',
-      background: 'radial-gradient(circle, rgba(132, 204, 22, 0.4) 0%, transparent 70%)',
+      width: '20px',
+      height: '20px',
+      background: 'radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%)',
       borderRadius: '50%',
       animation: 'orbFloat ease-in-out infinite',
       filter: 'blur(1px)'
