@@ -1,167 +1,148 @@
 import { useState, useEffect } from 'react';
 
 const DustParticlesBackground = () => {
-  const [particles, setParticles] = useState([]);
+  const [leaves, setLeaves] = useState([]);
 
   useEffect(() => {
-    const generateParticles = () => {
-      const particleCount = 50;
-      const newParticles = [];
-      
-      for (let i = 0; i < particleCount; i++) {
-        newParticles.push({
-          id: i,
+    // Generate falling leaves
+    const generateLeaves = () => {
+      const leafElements = [];
+      for (let i = 0; i < 15; i++) {
+        leafElements.push({
+          id: `leaf-${i}`,
           x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 4 + 1, // 1-5px
-          opacity: Math.random() * 0.6 + 0.2, // 0.2-0.8
+          y: Math.random() * 120 - 20, // Spread leaves throughout viewport
+          size: Math.random() * 12 + 8,
+          opacity: Math.random() * 0.6 + 0.2,
           animationDelay: Math.random() * 20,
-          animationDuration: Math.random() * 20 + 15, // 15-35s
-          direction: Math.random() > 0.5 ? 1 : -1,
-          color: Math.floor(Math.random() * 3) // 0, 1, or 2 for different colors
+          duration: Math.random() * 10 + 15, // 15-25 seconds (faster)
+          rotationSpeed: Math.random() * 4 + 2,
+          swayAmount: Math.random() * 30 + 20,
+          leafType: Math.floor(Math.random() * 4), // Different leaf shapes
+          color: Math.floor(Math.random() * 5) // Different autumn colors
         });
       }
-      setParticles(newParticles);
+      setLeaves(leafElements);
     };
 
-    generateParticles();
+    generateLeaves();
   }, []);
 
-  const getParticleColor = (colorIndex) => {
-    const colors = [
-      'rgba(99, 102, 241, 0.4)', // Indigo
-      'rgba(168, 85, 247, 0.4)', // Purple
-      'rgba(59, 130, 246, 0.4)'  // Blue
-    ];
-    return colors[colorIndex];
-  };
-
-  // CSS styles as JavaScript objects
-  const styles = {
-    container: {
-      position: 'fixed',
-      inset: '0',
-      overflow: 'hidden',
-      pointerEvents: 'none',
-      zIndex: -10
-    },
-    gradientOverlay: {
-      position: 'absolute',
-      inset: '0',
-      background: 'linear-gradient(to bottom right, rgba(248, 250, 252, 0.3), transparent, rgba(239, 246, 255, 0.2))'
-    },
-    particle: {
-      position: 'absolute',
-      borderRadius: '50%',
-      filter: 'blur(0.5px)',
-      animation: 'particleFloat linear infinite, particleTwinkle 3s ease-in-out infinite'
-    },
-    microParticle: {
-      position: 'absolute',
-      width: '6px',
-      height: '6px',
-      background: 'rgba(16, 185, 129, 0.4)',
-      borderRadius: '50%',
-      animation: 'microFloat linear infinite'
-    },
-    floatingOrb: {
-      position: 'absolute',
-      width: '20px',
-      height: '20px',
-      background: 'radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%)',
-      borderRadius: '50%',
-      animation: 'orbFloat ease-in-out infinite',
-      filter: 'blur(1px)'
-    }
-  };
-
-  // Create CSS keyframes
   useEffect(() => {
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
-      @keyframes particleFloat {
+      @keyframes gentleFall {
         0% {
-          transform: translateY(100vh) translateX(0px) rotate(0deg);
-        }
-        25% {
-          transform: translateY(75vh) translateX(20px) rotate(90deg);
-        }
-        50% {
-          transform: translateY(50vh) translateX(-15px) rotate(180deg);
-        }
-        75% {
-          transform: translateY(25vh) translateX(25px) rotate(270deg);
+          transform: translateY(0px) translateX(0px) rotate(0deg);
+          opacity: var(--leaf-opacity);
         }
         100% {
-          transform: translateY(-5vh) translateX(0px) rotate(360deg);
-        }
-      }
-
-      @keyframes microFloat {
-        0% {
-          transform: translateY(100vh) translateX(0px);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-5vh) translateX(10px);
+          transform: translateY(calc(100vh + 50px)) translateX(var(--sway-amount)) rotate(var(--rotation-end));
           opacity: 0;
         }
       }
 
-      @keyframes orbFloat {
+      @keyframes leafSway {
         0%, 100% {
-          transform: translateY(0px) translateX(0px) scale(1);
-          opacity: 0.3;
+          transform: translateX(0px);
         }
         25% {
-          transform: translateY(-20px) translateX(15px) scale(1.1);
-          opacity: 0.6;
+          transform: translateX(calc(var(--sway-amount) * 0.3));
         }
         50% {
-          transform: translateY(-10px) translateX(-10px) scale(0.9);
-          opacity: 0.4;
+          transform: translateX(calc(var(--sway-amount) * -0.2));
         }
         75% {
-          transform: translateY(-30px) translateX(20px) scale(1.2);
-          opacity: 0.7;
+          transform: translateX(calc(var(--sway-amount) * 0.4));
         }
       }
 
-      @keyframes particleTwinkle {
+      @keyframes leafRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes gentleBreeze {
         0%, 100% {
-          opacity: 0.2;
-          transform: scale(1);
+          transform: translateX(0px);
         }
         50% {
-          opacity: 0.8;
-          transform: scale(1.2);
+          transform: translateX(5px);
         }
       }
 
-      @keyframes particlePulse {
-        0%, 100% {
-          filter: blur(0.5px) brightness(1);
-        }
-        50% {
-          filter: blur(1px) brightness(1.3);
-        }
+      .leaf-background {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -5;
+        overflow: hidden;
+        background: linear-gradient(135deg, 
+          rgba(248, 250, 252, 0.3) 0%, 
+          rgba(254, 249, 240, 0.2) 30%,
+          rgba(248, 250, 252, 0.3) 100%);
       }
 
-      @media (max-width: 768px) {
-        .dust-particle {
-          animation-duration: 25s !important;
-        }
-        
-        .dust-orb {
-          width: 15px !important;
-          height: 15px !important;
-        }
+      .falling-leaf {
+        position: absolute;
+        pointer-events: none;
+        animation: gentleFall linear infinite;
+        transform-origin: center center;
+      }
+
+      .leaf-sway {
+        animation: leafSway ease-in-out infinite;
+      }
+
+      .leaf-rotate {
+        animation: leafRotate linear infinite;
+      }
+
+      /* Leaf shapes using CSS */
+      .leaf-maple {
+        clip-path: polygon(50% 0%, 25% 35%, 0% 35%, 35% 60%, 15% 100%, 50% 75%, 85% 100%, 65% 60%, 100% 35%, 75% 35%);
+      }
+
+      .leaf-oak {
+        clip-path: polygon(50% 0%, 65% 15%, 85% 20%, 90% 40%, 75% 55%, 85% 75%, 70% 90%, 50% 85%, 30% 90%, 15% 75%, 25% 55%, 10% 40%, 15% 20%, 35% 15%);
+      }
+
+      .leaf-birch {
+        clip-path: ellipse(35% 50% at 50% 50%);
+      }
+
+      .leaf-simple {
+        clip-path: polygon(50% 0%, 80% 30%, 100% 60%, 70% 100%, 30% 100%, 0% 60%, 20% 30%);
+      }
+
+      /* Subtle background elements */
+      .leaf-background::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(239, 68, 68, 0.02) 0%, transparent 50%),
+                    radial-gradient(circle at 60% 40%, rgba(34, 197, 94, 0.02) 0%, transparent 50%);
+        animation: gentleBreeze 25s ease-in-out infinite;
+      }
+
+      /* Soft ground fog effect */
+      .leaf-background::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to top, 
+          rgba(248, 250, 252, 0.1) 0%, 
+          rgba(248, 250, 252, 0.05) 50%,
+          transparent 100%);
+        pointer-events: none;
       }
     `;
     document.head.appendChild(styleSheet);
@@ -171,59 +152,85 @@ const DustParticlesBackground = () => {
     };
   }, []);
 
+  const getLeafColor = (colorIndex) => {
+    const colors = [
+      'rgba(34, 197, 94, 0.7)',   // Fresh Green (Leafy)
+      'rgba(101, 163, 13, 0.6)',  // Olive Green (Mature Leaf)
+      'rgba(190, 138, 40, 0.6)',  // Dry Leaf Yellow
+      'rgba(133, 77, 14, 0.6)',   // Earthy Brown (Fallen Leaf)
+      'rgba(22, 101, 52, 0.6)',   // Deep Forest Green (Thick Leaf)
+      'rgba(235, 169, 81, 0.5)',  // Faded Golden (Autumn Leaf)
+    ];
+    return colors[colorIndex];
+  };
+
+  const getLeafShape = (typeIndex) => {
+    const shapes = ['leaf-maple', 'leaf-oak', 'leaf-birch', 'leaf-simple'];
+    return shapes[typeIndex];
+  };
+
   return (
-    <div style={styles.container}>
-      {/* Subtle gradient overlay */}
-      <div style={styles.gradientOverlay}></div>
-      
-      {/* Main dust particles */}
-      {particles.map((particle, index) => (
+    <div className="leaf-background">
+      {/* Falling leaves */}
+      {leaves.map((leaf) => (
         <div
-          key={particle.id}
-          className="dust-particle"
+          key={leaf.id}
+          className={`falling-leaf ${getLeafShape(leaf.leafType)}`}
           style={{
-            ...styles.particle,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            backgroundColor: getParticleColor(particle.color),
-            animationDelay: `${particle.animationDelay}s`,
-            animationDuration: `${particle.animationDuration}s`,
-            opacity: particle.opacity,
-            transform: `rotate(${particle.direction * 45}deg)`,
-            animation: index % 3 === 0 ? 
-              'particleFloat linear infinite, particlePulse 4s ease-in-out infinite' : 
-              'particleFloat linear infinite, particleTwinkle 3s ease-in-out infinite'
+            left: `${leaf.x}%`,
+            top: `${leaf.y}%`,
+            width: `${leaf.size}px`,
+            height: `${leaf.size}px`,
+            background: getLeafColor(leaf.color),
+            animationDelay: `${leaf.animationDelay}s`,
+            animationDuration: `${leaf.duration}s`,
+            '--leaf-opacity': leaf.opacity,
+            '--sway-amount': `${leaf.swayAmount}px`,
+            '--rotation-end': `${leaf.rotationSpeed * 360}deg`,
+            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
           }}
-        />
+        >
+          {/* Add subtle sway animation */}
+          <div
+            className="leaf-sway"
+            style={{
+              width: '100%',
+              height: '100%',
+              animationDuration: `${leaf.duration * 0.3}s`,
+              animationDelay: `${leaf.animationDelay * 0.5}s`
+            }}
+          >
+            {/* Add gentle rotation */}
+            <div
+              className="leaf-rotate"
+              style={{
+                width: '100%',
+                height: '100%',
+                background: 'inherit',
+                clipPath: 'inherit',
+                animationDuration: `${leaf.rotationSpeed}s`,
+                animationDelay: `${leaf.animationDelay * 0.7}s`
+              }}
+            />
+          </div>
+        </div>
       ))}
 
-      {/* Micro particles for depth */}
-      {Array.from({ length: 80 }).map((_, i) => (
-        <div
-          key={`micro-${i}`}
-          style={{
-            ...styles.microParticle,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 30}s`,
-            animationDuration: `${Math.random() * 25 + 20}s`
-          }}
-        />
-      ))}
-
-      {/* Floating orbs for ambient effect */}
+      {/* Gentle floating particles for atmosphere */}
       {Array.from({ length: 6 }).map((_, i) => (
         <div
-          key={`orb-${i}`}
-          className="dust-orb"
+          key={`particle-${i}`}
           style={{
-            ...styles.floatingOrb,
+            position: 'absolute',
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 15 + 20}s`
+            width: '3px',
+            height: '3px',
+            background: 'rgba(251, 191, 36, 0.2)',
+            borderRadius: '50%',
+            animation: `gentleFall ${Math.random() * 30 + 40}s linear infinite`,
+            animationDelay: `${Math.random() * 25}s`,
+            filter: 'blur(1px)'
           }}
         />
       ))}

@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import SlideOne from '../assets/slider1.jpeg';
-import SlideTwo from '../assets/slider2.jpeg';
-import SlideThree from '../assets/slider3.jpeg';
-import SlideFour from '../assets/slider4.jpeg';
-import SlideSix from '../assets/whatwedo4.jpeg'
-import SlideSeven from '../assets/slider7.jpeg';
-import SlideEight from '../assets/slider8.jpeg';
-import SlideNine from '../assets/slider9.jpeg';
-import SlideTen from '../assets/slider10.jpeg';
-import SlideFive from '../assets/whatwedo5.jpeg';
-import SlideEleven from '../assets/slider11.jpeg';
-import SlideTwelve from '../assets/slider12.jpeg';
-import SlideThirteen from '../assets/HomeSlide2.jpeg';
-import SlideFourteen from '../assets/slider14.jpeg';
-import SlideFifteen from '../assets/slider15.jpeg';
-import AnimatedContent from './AnimatedContent';
+import FadeContent from './FadeContent';
+import SlideOne from '../assets/slider1.webp';
+import SlideTwo from '../assets/slider2.webp';
+import SlideThree from '../assets/slider3.webp';
+import SlideFour from '../assets/slider4.webp';
+import SlideSix from '../assets/whatwedo4.webp'
+import SlideSeven from '../assets/slider7.webp';
+import SlideEight from '../assets/slider8.webp';
+import SlideNine from '../assets/slider9.webp';
+import SlideTen from '../assets/slider10.webp';
+import SlideFive from '../assets/whatwedo5.webp';
+import SlideEleven from '../assets/slider11.webp';
+import SlideTwelve from '../assets/slider12.webp';
+import SlideThirteen from '../assets/HomeSlide2.webp';
+import SlideFourteen from '../assets/slider14.webp';
+import SlideFifteen from '../assets/slider15.webp';
 const PhotoCarousel = () => {
     // Sample photos - replace with your own images
     const photos = [
@@ -141,20 +141,9 @@ const PhotoCarousel = () => {
     return (
         <div className="max-w-4xl mx-auto p-6">
             <div className="text-center mb-12">
-                <AnimatedContent
-                    distance={100}
-                    direction="vertical"
-                    reverse={true}
-                    duration={1.2}
-                    ease="power1.out"
-                    initialOpacity={0.2}
-                    animateOpacity
-                    scale={1.1}
-                    threshold={0.2}
-                    delay={0.3}
-                >
+               <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                     <h2 className="text-4xl font-bold text-green-700 mb-4">Our Success Stories</h2>
-                </AnimatedContent>
+                </FadeContent>
                 <p className="text-xl text-gray-600">
                     Every step forward is a story of change!
                 </p>
@@ -167,6 +156,7 @@ const PhotoCarousel = () => {
                 <div className="relative w-full h-full">
 
                     <img
+                    loading="lazy"
                         src={photos[currentIndex].src}
                         alt={photos[currentIndex].alt}
                         className="w-full h-full object-cover transition-opacity duration-500"

@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronUp, ChevronLeft, ChevronRight, Phone, Mail, MapPin, Facebook, Instagram, Droplets, Users, GraduationCap, Heart, TreePine, Home } from 'lucide-react';
 import { MessageCircle, MessageSquare, PhoneCall } from 'lucide-react';
+import SplitText from '../animations/SplitText';
 import BlurText from '../animations/BlurText';
-import AnimatedContent from '../animations/AnimatedContent';
+import FadeContent from '../animations/FadeContent';
 import Logo from '../assets/thanporunai-logo.png';
-import HomeSlideOne from '../assets/HomSlide1.jpeg';
-import HomeSlideTwo from '../assets/HomeSlide2.jpeg';
-import HomeSlideThree from '../assets/HomeSlide3.jpeg';
-import HomeSlideFour from '../assets/HomeSlide4.jpeg';
-import WhatWeDoOne from '../assets/whatwedo1.jpeg';
-import WhatWeDoTwo from '../assets/whatwedo2.jpeg';
-import WhatWeDoThree from '../assets/whatwedo3.jpeg';
-import WhatWeDoFour from '../assets/whatwedo4.jpeg';
-import WhatWeDoFive from '../assets/whatwedo5.jpeg';
-import SlideOne from '../assets/slider1.jpeg';
-import SlideTwo from '../assets/slider2.jpeg';
-import SlideThree from '../assets/slider3.jpeg';
-import SlideFour from '../assets/slider4.jpeg';
-import SlideFive from '../assets/slider5.jpeg';
-import SlideSix from '../assets/slider6.jpeg';
-import SlideSeven from '../assets/slider7.jpeg';
-import SlideEight from '../assets/slider8.jpeg';
-import SlideNine from '../assets/slider9.jpeg';
-import SlideTen from '../assets/slider10.jpeg';
+import HomeSlideOne from '../assets/HomSlide1.webp';
+import HomeSlideTwo from '../assets/HomeSlide2.webp';
+import HomeSlideThree from '../assets/HomeSlide3.webp';
+import HomeSlideFour from '../assets/HomeSlide4.webp';
+import WhatWeDoOne from '../assets/whatwedo1.webp';
+import WhatWeDoTwo from '../assets/whatwedo2.webp';
+import WhatWeDoThree from '../assets/whatwedo3.webp';
+import WhatWeDoFour from '../assets/whatwedo4.webp';
+import WhatWeDoFive from '../assets/whatwedo5.webp';
+import SlideOne from '../assets/slider1.webp';
+import SlideFive from '../assets/slider5.webp';
+import SlideSix from '../assets/slider6.webp';
 import PhotoCarousel from '../animations/PhotoCarousel';
 import DustParticlesBackground from '../animations/DustParticlesBackground';
 const PorunaiPortfolio = () => {
@@ -80,59 +74,6 @@ const PorunaiPortfolio = () => {
     }
   ];
 
-  const galleryImages = [
-    {
-      id: 1,
-      src: SlideOne,
-      title: "Community Outreach"
-    },
-    {
-      id: 2,
-      src: SlideTwo,
-      title: "Educational Programs"
-    },
-    {
-      id: 3,
-      src: SlideThree,
-      title: "Environmental Care"
-    },
-    {
-      id: 4,
-      src: SlideFour,
-      title: "Healthcare Support"
-    },
-    {
-      id: 5,
-      src: HomeSlideFour,
-      title: "Youth Development"
-    },
-    {
-      id: 6,
-      src: HomeSlideThree,
-      title: "Digital Innovation"
-    },
-    {
-      id: 7,
-      src: SlideFive,
-      title: "Community Empowerment"
-    },
-    {
-      id: 8,
-      src: SlideEight,
-      title: "Cultural Events"
-    },
-    {
-      id: 9,
-      src: SlideNine,
-      title: "Women Welfare"
-    },
-    {
-      id: 10,
-      src: SlideTen,
-      title: "Skill Training"
-    }
-  ];
-
   useEffect(() => {
     if (!isAutoPlaying) return;
 
@@ -143,7 +84,7 @@ const PorunaiPortfolio = () => {
     return () => clearInterval(interval);
   }, [currentSlide, isAutoPlaying]);
 
- 
+
 
   const goToSlide = (index) => {
     if (isTransitioning || index === currentSlide) return;
@@ -263,7 +204,7 @@ const PorunaiPortfolio = () => {
     <div className="min-h-screen ">
       <DustParticlesBackground />
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 shadow-lg">
+      <nav className="z-50 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-38"> {/* Increased from h-20 to h-28 */}
             {/* Logo */}
@@ -322,10 +263,9 @@ const PorunaiPortfolio = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-36 min-h-screen bg-gradient-to-br from-green-600 via-green-700 to-teal-600 flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-
               <div className="mb-6">
                 <BlurText
                   text="நல்லதொரு நாளுக்காக, இன்று ஒரு நற்செயல்!"
@@ -424,20 +364,19 @@ const PorunaiPortfolio = () => {
       <section id="about" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <AnimatedContent
-              distance={100}
-              direction="vertical"
-              reverse={true}
-              duration={1.2}
-              ease="power1.out"
-              initialOpacity={0.2}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={0.3}
-            >
-              <h2 className="text-4xl font-bold text-green-700 mb-4">Who We Are</h2>
-            </AnimatedContent>
+            <SplitText
+              text="Who We Are"
+              className="text-4xl font-bold text-green-700 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               <span style={{ fontWeight: 'bold' }}>Thanporunai Arakattalai</span> is a passionate social welfare organization committed to creating a cleaner, safer, and more conscious society. Rooted in the values of service and sustainability, our foundation brings together individuals and volunteers who care deeply about the environment and the well-being of future generations.
             </p>
@@ -482,20 +421,9 @@ const PorunaiPortfolio = () => {
           {/* Our Team */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="text-center mb-12">
-              <AnimatedContent
-                distance={150}
-                direction="horizontal"
-                reverse={false}
-                duration={1.2}
-                ease="bounce.out"
-                initialOpacity={0.2}
-                animateOpacity
-                scale={1.1}
-                threshold={0.2}
-                delay={0.3}
-              >
+             <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <h3 className="text-3xl font-bold text-green-700 mb-4">Our Leadership Team</h3>
-              </AnimatedContent>
+            </FadeContent>
               <p className="text-lg text-gray-600">
                 Meet the dedicated individuals who lead our mission for a better tomorrow
               </p>
@@ -561,20 +489,20 @@ const PorunaiPortfolio = () => {
       <section id="services" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <AnimatedContent
-              distance={100}
-              direction="vertical"
-              reverse={true}
-              duration={1.2}
-              ease="power1.out"
-              initialOpacity={0.2}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={0.3}
-            >
-              <h2 className="text-4xl font-bold text-green-700 mb-4">What We Do</h2>
-            </AnimatedContent>
+             <SplitText
+              text="What We Do"
+              className="text-4xl font-bold text-green-700 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
+            
             <p className="text-xl text-gray-600">
               At <span style={{ fontWeight: 'bold' }}>Thanporunai Arakattalai</span>, we believe that small acts of service can lead to big change.
               Our foundation is committed to uplifting communities, protecting nature, and supporting the next generation through hands-on social initiatives.
@@ -608,7 +536,7 @@ const PorunaiPortfolio = () => {
               </button>
 
               <div className="flex gap-2">
-                {Array.from({ length: Math.ceil(galleryImages.length / 2) }).map((_, index) => (
+                {Array.from({ length: Math.ceil(services.length / 2) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
@@ -630,7 +558,7 @@ const PorunaiPortfolio = () => {
       </section>
 
       {/* Services Image Slider */}
-     <PhotoCarousel/>
+      <PhotoCarousel />
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-gradient-to-r from-green-600 via-green-700 to-teal-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -727,13 +655,13 @@ const PorunaiPortfolio = () => {
         </div>
       </footer>
       {isVisible && (
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300"
-        aria-label="Back to top"
-      >
-        <ChevronUp className="w-6 h-6" />
-      </button>
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300"
+          aria-label="Back to top"
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
       )}
     </div>
   );
