@@ -23,7 +23,8 @@ import SlideSeven from '../assets/slider7.jpeg';
 import SlideEight from '../assets/slider8.jpeg';
 import SlideNine from '../assets/slider9.jpeg';
 import SlideTen from '../assets/slider10.jpeg';
-
+import PhotoCarousel from '../animations/PhotoCarousel';
+import DustParticlesBackground from '../animations/DustParticlesBackground';
 const PorunaiPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -142,19 +143,7 @@ const PorunaiPortfolio = () => {
     return () => clearInterval(interval);
   }, [currentSlide, isAutoPlaying]);
 
-  const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  const handlePrev = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
+ 
 
   const goToSlide = (index) => {
     if (isTransitioning || index === currentSlide) return;
@@ -167,7 +156,7 @@ const PorunaiPortfolio = () => {
     {
       id: 1,
       title: "River Cleaning Initiative",
-      description: "தாமிரபரணி நதி மற்றும் அதன் கரையோரங்களில் கிடந்த பிளாஸ்டிக் மற்றும் கழிவுகளை தண்பொருநை அறக்கட்டளை தனது தன்னார்வலர்களுடன் இணைந்து சுத்தம் செய்தது.",
+      description: "21 நாட்களில் தாமிரபரணி நதியிலிருந்து குப்பைகளை அகற்றியது தன்பொருநை அறக்கட்டளை",
       image: WhatWeDoOne,
       category: "Environment",
       icon: <Droplets className="w-6 h-6" />
@@ -175,7 +164,7 @@ const PorunaiPortfolio = () => {
     {
       id: 2,
       title: "Supporting for Sports Student",
-      description: "தண்பொருநை அறக்கட்டளை, ராணி அண்ணா மகளிர் கல்லூரிக்கு எதிர்கால விளையாட்டு முன்னேற்றத்திற்காக வாலிபால் வலை வழங்கியுள்ளது.",
+      description: "தன்பொருநை அறக்கட்டளை, ராணி அண்ணா மகளிர் கல்லூரிக்கு எதிர்கால விளையாட்டு முன்னேற்றத்திற்காக வாலிபால் வலை வழங்கியுள்ளது.",
       image: WhatWeDoTwo,
       category: "Sports",
       icon: <Users className="w-6 h-6" />
@@ -183,7 +172,7 @@ const PorunaiPortfolio = () => {
     {
       id: 3,
       title: "Tree Plantation Drive",
-      description: "தண்பொருநை அறக்கட்டளை, மரக்கன்று நட்டு, சுற்றுச்சூழல் பாதுகாப்பில் தனது பங்களிப்பை அளித்தது.",
+      description: "தன்பொருநை அறக்கட்டளை, மரக்கன்று நட்டு, சுற்றுச்சூழல் பாதுகாப்பில் தனது பங்களிப்பை அளித்தது.",
       image: WhatWeDoThree,
       category: "Plantation",
       icon: <GraduationCap className="w-6 h-6" />
@@ -191,7 +180,7 @@ const PorunaiPortfolio = () => {
     {
       id: 4,
       title: "Marathon for Health",
-      description: "ஒவ்வொரு 3 மாதத்திற்கும் ஒருமுறை, தண்பொருநை அறக்கட்டளை திருநெல்வேலி அண்ணா ஸ்டேடியத்தில் மாரத்தான் ஓட்டப்பந்தயத்தை நடத்துகிறது.",
+      description: "ஒவ்வொரு 3 மாதத்திற்கும் ஒருமுறை, தன்பொருநை அறக்கட்டளை திருநெல்வேலி அண்ணா ஸ்டேடியத்தில் மாரத்தான் ஓட்டப்பந்தயத்தை நடத்துகிறது.",
       image: WhatWeDoFour,
       category: "Healthcare",
       icon: <Heart className="w-6 h-6" />
@@ -199,7 +188,7 @@ const PorunaiPortfolio = () => {
     {
       id: 5,
       title: "Food Distribution",
-      description: "தண்பொருநை அறக்கட்டளை குழந்தைகளுக்காக சிறப்பு உணவுவிருந்து வழங்கியது.",
+      description: "தன்பொருநை அறக்கட்டளை குழந்தைகளுக்காக சிறப்பு உணவுவிருந்து வழங்கியது.",
       image: WhatWeDoFive,
       category: "Community Service",
       icon: <Home className="w-6 h-6" />
@@ -207,7 +196,7 @@ const PorunaiPortfolio = () => {
     {
       id: 6,
       title: "Free Medical Camp",
-      description: "தண்பொருநை அறக்கட்டளை இலவச மருத்துவ முகாமை நடத்தியுள்ளது.",
+      description: "தன்பொருநை அறக்கட்டளை இலவச மருத்துவ முகாமை நடத்தியுள்ளது.",
       image: SlideOne,
       category: "Medical",
       icon: <TreePine className="w-6 h-6" />
@@ -271,8 +260,8 @@ const PorunaiPortfolio = () => {
 
   return (
 
-    <div className="min-h-screen bg-white">
-
+    <div className="min-h-screen ">
+      <DustParticlesBackground />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -432,7 +421,7 @@ const PorunaiPortfolio = () => {
       </section>
 
       {/* Who We Are Section */}
-      <section id="about" className="py-16 bg-gray-50">
+      <section id="about" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <AnimatedContent
@@ -512,72 +501,64 @@ const PorunaiPortfolio = () => {
               </p>
             </div>
 
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  {/* Founder */}
-  <div className="text-center group">
-    <div className="relative mb-4">
-      <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-        <Users className="w-16 h-16 text-white" />
-      </div>
-      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-        Founder
-      </div>
-    </div>
-    <h4 className="text-xl font-bold text-gray-800 mb-1">R. Selvarani</h4>
-    <p className="text-green-600 font-medium mb-1">B.Sc, Founder & Visionary</p>
-    <p className="text-gray-600 text-sm">
-      Leading our organization with passion and dedication to create positive social change
-    </p>
-  </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Founder */}
+              <div className="text-center group">
+                <div className="relative mb-4">
+                  <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <Users className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Founder
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-2">Selvarani</h4>
+                <p className="text-green-600 font-medium">Founder & Visionary</p>
+                <p className="text-gray-600 text-sm mt-2">
+                  Leading our organization with passion and dedication to create positive social change
+                </p>
+              </div>
 
-  {/* Managing & Financial Trustee */}
-  <div className="text-center group">
-    <div className="relative mb-4">
-      <div className="w-32 h-32 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-        <Users className="w-16 h-16 text-white" />
-      </div>
-      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-        Trustee
-      </div>
-    </div>
-    <h4 className="text-xl font-bold text-gray-800 mb-1">M. Nagaraj</h4>
-   <p className="text-amber-600 font-medium mb-1">
-  MBA,&nbsp;
-  <span className="relative inline-block">
-    <span className="absolute left-0 right-0 top-0 h-[1px] bg-amber-600 -translate-y-1"></span>
-    LLB (Hons)
-  </span>
-  &nbsp;– Managing & Financial Trustee
-</p>
-    <p className="text-gray-600 text-sm">
-      Overseeing operations and ensuring transparent financial management
-    </p>
-  </div>
+              {/* Managing & Financial Trustee */}
+              <div className="text-center group">
+                <div className="relative mb-4">
+                  <div className="w-32 h-32 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <Users className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Trustee
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-2">Nagaraj</h4>
+                <p className="text-amber-600 font-medium">Managing & Financial Trustee</p>
+                <p className="text-gray-600 text-sm mt-2">
+                  Overseeing operations and ensuring transparent financial management
+                </p>
+              </div>
 
-  {/* Legal Advisor */}
-  <div className="text-center group sm:col-span-2 lg:col-span-1">
-    <div className="relative mb-4">
-      <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-        <Users className="w-16 h-16 text-white" />
-      </div>
-      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-        Legal Advisor
-      </div>
-    </div>
-    <h4 className="text-xl font-bold text-gray-800 mb-1">M. Vignesh</h4>
-    <p className="text-blue-600 font-medium mb-1">B.Com, LLB (Hons) – Legal Advisor</p>
-    <p className="text-gray-600 text-sm">
-      Providing legal guidance and ensuring compliance with all regulations
-    </p>
-  </div>
-</div>
-
+              {/* Legal Advisor */}
+              <div className="text-center group sm:col-span-2 lg:col-span-1">
+                <div className="relative mb-4">
+                  <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <Users className="w-16 h-16 text-white" />
+                  </div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Legal Advisor
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-2">Vignesh</h4>
+                <p className="text-blue-600 font-medium">Legal Advisor</p>
+                <p className="text-gray-600 text-sm mt-2">
+                  Providing legal guidance and ensuring compliance with all regulations
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* What We Do Section */}
-      <section id="services" className="py-16 bg-white">
+      <section id="services" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <AnimatedContent
@@ -649,73 +630,7 @@ const PorunaiPortfolio = () => {
       </section>
 
       {/* Services Image Slider */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <AnimatedContent
-              distance={100}
-              direction="vertical"
-              reverse={true}
-              duration={1.2}
-              ease="power1.out"
-              initialOpacity={0.2}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={0.3}
-            >
-              <h2 className="text-4xl font-bold text-green-700 mb-4">Our Achivements</h2>
-            </AnimatedContent>
-            <p className="text-xl text-gray-600">
-              Visual glimpse of our community service initiatives
-            </p>
-          </div>
-
-          <div className="relative max-w-6xl mx-auto">
-            <div className="relative w-full max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px]">
-              {galleryImages.length > 0 && (
-                <img
-                  src={galleryImages[currentSlide].src}
-                  alt={galleryImages[currentSlide].title || `Slide ${currentSlide + 1}`}
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-              {/* Navigation Arrows - Use consistent handlePrev/handleNext */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Dot indicators - Fixed to show all images */}
-            <div className="flex justify-center mt-6 gap-2">
-              {galleryImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`transition-all duration-200 ${currentSlide === index
-                      ? 'w-12 h-3 bg-green-600 rounded-full'
-                      : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400'
-                    }`}
-                />
-              ))}
-            </div>
-            {/* Slide Indicators */}
-            
-          </div>
-        </div>
-      </section>
-
+     <PhotoCarousel/>
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-gradient-to-r from-green-600 via-green-700 to-teal-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -752,8 +667,8 @@ const PorunaiPortfolio = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-amber-400" />
-                  <span>+91 7708927245</span>
-                  <span>+91 8428778159</span>
+                  <span>+91 77089 27245</span>
+                  <span>+91 96551 62224</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-amber-400" />
@@ -811,7 +726,7 @@ const PorunaiPortfolio = () => {
           </p>
         </div>
       </footer>
-      isVisible && (
+      {isVisible && (
       <button
         onClick={scrollToTop}
         className="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300"
@@ -819,7 +734,7 @@ const PorunaiPortfolio = () => {
       >
         <ChevronUp className="w-6 h-6" />
       </button>
-      )
+      )}
     </div>
   );
 };
