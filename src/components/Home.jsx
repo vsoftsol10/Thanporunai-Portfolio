@@ -167,7 +167,7 @@ const PorunaiPortfolio = () => {
     {
       id: 1,
       title: "River Cleaning Initiative",
-      description: "21 நாட்களில் தாமிரபரணி நதியிலிருந்து குப்பைகளை அகற்றியது தன்பொருநை அறக்கட்டளை",
+      description: "தாமிரபரணி நதி மற்றும் அதன் கரையோரங்களில் கிடந்த பிளாஸ்டிக் மற்றும் கழிவுகளை தண்பொருநை அறக்கட்டளை தனது தன்னார்வலர்களுடன் இணைந்து சுத்தம் செய்தது.",
       image: WhatWeDoOne,
       category: "Environment",
       icon: <Droplets className="w-6 h-6" />
@@ -175,7 +175,7 @@ const PorunaiPortfolio = () => {
     {
       id: 2,
       title: "Supporting for Sports Student",
-      description: "தன்பொருநை அறக்கட்டளை, ராணி அண்ணா மகளிர் கல்லூரிக்கு எதிர்கால விளையாட்டு முன்னேற்றத்திற்காக வாலிபால் வலை வழங்கியுள்ளது.",
+      description: "தண்பொருநை அறக்கட்டளை, ராணி அண்ணா மகளிர் கல்லூரிக்கு எதிர்கால விளையாட்டு முன்னேற்றத்திற்காக வாலிபால் வலை வழங்கியுள்ளது.",
       image: WhatWeDoTwo,
       category: "Sports",
       icon: <Users className="w-6 h-6" />
@@ -183,7 +183,7 @@ const PorunaiPortfolio = () => {
     {
       id: 3,
       title: "Tree Plantation Drive",
-      description: "தன்பொருநை அறக்கட்டளை, மரக்கன்று நட்டு, சுற்றுச்சூழல் பாதுகாப்பில் தனது பங்களிப்பை அளித்தது.",
+      description: "தண்பொருநை அறக்கட்டளை, மரக்கன்று நட்டு, சுற்றுச்சூழல் பாதுகாப்பில் தனது பங்களிப்பை அளித்தது.",
       image: WhatWeDoThree,
       category: "Plantation",
       icon: <GraduationCap className="w-6 h-6" />
@@ -191,7 +191,7 @@ const PorunaiPortfolio = () => {
     {
       id: 4,
       title: "Marathon for Health",
-      description: "ஒவ்வொரு 3 மாதத்திற்கும் ஒருமுறை, தன்பொருநை அறக்கட்டளை திருநெல்வேலி அண்ணா ஸ்டேடியத்தில் மாரத்தான் ஓட்டப்பந்தயத்தை நடத்துகிறது.",
+      description: "ஒவ்வொரு 3 மாதத்திற்கும் ஒருமுறை, தண்பொருநை அறக்கட்டளை திருநெல்வேலி அண்ணா ஸ்டேடியத்தில் மாரத்தான் ஓட்டப்பந்தயத்தை நடத்துகிறது.",
       image: WhatWeDoFour,
       category: "Healthcare",
       icon: <Heart className="w-6 h-6" />
@@ -199,7 +199,7 @@ const PorunaiPortfolio = () => {
     {
       id: 5,
       title: "Food Distribution",
-      description: "தன்பொருநை அறக்கட்டளை குழந்தைகளுக்காக சிறப்பு உணவுவிருந்து வழங்கியது.",
+      description: "தண்பொருநை அறக்கட்டளை குழந்தைகளுக்காக சிறப்பு உணவுவிருந்து வழங்கியது.",
       image: WhatWeDoFive,
       category: "Community Service",
       icon: <Home className="w-6 h-6" />
@@ -207,7 +207,7 @@ const PorunaiPortfolio = () => {
     {
       id: 6,
       title: "Free Medical Camp",
-      description: "தன்பொருநை அறக்கட்டளை இலவச மருத்துவ முகாமை நடத்தியுள்ளது.",
+      description: "தண்பொருநை அறக்கட்டளை இலவச மருத்துவ முகாமை நடத்தியுள்ளது.",
       image: SlideOne,
       category: "Medical",
       icon: <TreePine className="w-6 h-6" />
@@ -512,58 +512,66 @@ const PorunaiPortfolio = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Founder */}
-              <div className="text-center group">
-                <div className="relative mb-4">
-                  <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <Users className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Founder
-                  </div>
-                </div>
-                <h4 className="text-xl font-bold text-gray-800 mb-2">Selvarani</h4>
-                <p className="text-green-600 font-medium">Founder & Visionary</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  Leading our organization with passion and dedication to create positive social change
-                </p>
-              </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Founder */}
+  <div className="text-center group">
+    <div className="relative mb-4">
+      <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+        <Users className="w-16 h-16 text-white" />
+      </div>
+      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+        Founder
+      </div>
+    </div>
+    <h4 className="text-xl font-bold text-gray-800 mb-1">R. Selvarani</h4>
+    <p className="text-green-600 font-medium mb-1">B.Sc, Founder & Visionary</p>
+    <p className="text-gray-600 text-sm">
+      Leading our organization with passion and dedication to create positive social change
+    </p>
+  </div>
 
-              {/* Managing & Financial Trustee */}
-              <div className="text-center group">
-                <div className="relative mb-4">
-                  <div className="w-32 h-32 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <Users className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Trustee
-                  </div>
-                </div>
-                <h4 className="text-xl font-bold text-gray-800 mb-2">Nagaraj</h4>
-                <p className="text-amber-600 font-medium">Managing & Financial Trustee</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  Overseeing operations and ensuring transparent financial management
-                </p>
-              </div>
+  {/* Managing & Financial Trustee */}
+  <div className="text-center group">
+    <div className="relative mb-4">
+      <div className="w-32 h-32 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+        <Users className="w-16 h-16 text-white" />
+      </div>
+      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+        Trustee
+      </div>
+    </div>
+    <h4 className="text-xl font-bold text-gray-800 mb-1">M. Nagaraj</h4>
+   <p className="text-amber-600 font-medium mb-1">
+  MBA,&nbsp;
+  <span className="relative inline-block">
+    <span className="absolute left-0 right-0 top-0 h-[1px] bg-amber-600 -translate-y-1"></span>
+    LLB (Hons)
+  </span>
+  &nbsp;– Managing & Financial Trustee
+</p>
+    <p className="text-gray-600 text-sm">
+      Overseeing operations and ensuring transparent financial management
+    </p>
+  </div>
 
-              {/* Legal Advisor */}
-              <div className="text-center group sm:col-span-2 lg:col-span-1">
-                <div className="relative mb-4">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <Users className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Legal Advisor
-                  </div>
-                </div>
-                <h4 className="text-xl font-bold text-gray-800 mb-2">Vignesh</h4>
-                <p className="text-blue-600 font-medium">Legal Advisor</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  Providing legal guidance and ensuring compliance with all regulations
-                </p>
-              </div>
-            </div>
+  {/* Legal Advisor */}
+  <div className="text-center group sm:col-span-2 lg:col-span-1">
+    <div className="relative mb-4">
+      <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+        <Users className="w-16 h-16 text-white" />
+      </div>
+      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-semibold">
+        Legal Advisor
+      </div>
+    </div>
+    <h4 className="text-xl font-bold text-gray-800 mb-1">M. Vignesh</h4>
+    <p className="text-blue-600 font-medium mb-1">B.Com, LLB (Hons) – Legal Advisor</p>
+    <p className="text-gray-600 text-sm">
+      Providing legal guidance and ensuring compliance with all regulations
+    </p>
+  </div>
+</div>
+
           </div>
         </div>
       </section>
