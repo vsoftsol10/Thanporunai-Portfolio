@@ -58,17 +58,17 @@ const DustParticlesBackground = () => {
     },
     microParticle: {
       position: 'absolute',
-      width: '10px',
-      height: '10px',
+      width: '8px',
+      height: '8px',
       background: 'rgba(16, 185, 129, 0.4)',
       borderRadius: '50%',
       animation: 'microFloat linear infinite'
     },
     floatingOrb: {
       position: 'absolute',
-      width: '20px',
-      height: '20px',
-      background: 'radial-gradient(circle, rgba(132, 204, 22, 0.4) 0%, transparent 40%)',
+      width: '14px',
+      height: '14px',
+      background: 'radial-gradient(circle, rgba(132, 204, 22, 0.4) 0%, transparent 70%)',
       borderRadius: '50%',
       animation: 'orbFloat ease-in-out infinite',
       filter: 'blur(1px)'
